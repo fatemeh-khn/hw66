@@ -1,36 +1,38 @@
 package entities;
 
-import java.util.Date;
+
+import java.sql.Date;
+import java.util.Objects;
 
 public class Match {
-    private Team first;
-    private Team second;
+    private Team firstTeam;
+    private Team secondTeam;
     private int teamFirstScore;
     private int teamSecondScore;
     private Date date;
 
     public Match(Team first, Team second, int teamFirstScore, int teamSecondScore, Date date) {
-        this.first = first;
-        this.second = second;
+        this.firstTeam = first;
+        this.secondTeam = second;
         this.teamFirstScore = teamFirstScore;
         this.teamSecondScore = teamSecondScore;
         this.date = date;
     }
 
-    public Team getFirst() {
-        return first;
+    public Team getFirstTeam() {
+        return firstTeam;
     }
 
-    public void setFirst(Team first) {
-        this.first = first;
+    public void setFirstTeam(Team firstTeam) {
+        this.firstTeam = firstTeam;
     }
 
-    public Team getSecond() {
-        return second;
+    public Team getSecondTeam() {
+        return secondTeam;
     }
 
-    public void setSecond(Team second) {
-        this.second = second;
+    public void setSecondTeam(Team secondTeam) {
+        this.secondTeam = secondTeam;
     }
 
     public int getTeamFirstScore() {
@@ -55,5 +57,29 @@ public class Match {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Match match = (Match) o;
+        return teamFirstScore == match.teamFirstScore && teamSecondScore == match.teamSecondScore && Objects.equals(firstTeam, match.firstTeam) && Objects.equals(secondTeam, match.secondTeam) && Objects.equals(date, match.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstTeam, secondTeam, teamFirstScore, teamSecondScore, date);
+    }
+
+    @Override
+    public String toString() {
+        return "Match{" +
+                "firstTeam=" + firstTeam +
+                ", secondTeam=" + secondTeam +
+                ", teamFirstScore=" + teamFirstScore +
+                ", teamSecondScore=" + teamSecondScore +
+                ", date=" + date +
+                '}';
     }
 }
