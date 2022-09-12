@@ -11,6 +11,16 @@ public class Team {
     private int goalsCount;
     private int matchesPlayed;
 
+    public Team(String name, int winCount, int lostCount, int equalCount, int score, int goalsCount, int matchesPlayed) {
+        this.name = name;
+        this.winCount = winCount;
+        this.lostCount = lostCount;
+        this.equalCount = equalCount;
+        this.score = score;
+        this.goalsCount = goalsCount;
+        this.matchesPlayed = matchesPlayed;
+    }
+
     public String getName() {
         return name;
     }
