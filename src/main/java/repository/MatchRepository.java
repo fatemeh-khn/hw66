@@ -1,4 +1,4 @@
 package repository;
 
-public class MatchRepository {
+public class MatchRepository  {
 }

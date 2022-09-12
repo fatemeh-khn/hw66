@@ -1,4 +1,4 @@
 package service;
 
-public class TeamService {
+public interface  TeamService {
 }
