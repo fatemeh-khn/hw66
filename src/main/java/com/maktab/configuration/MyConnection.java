@@ -1,4 +1,4 @@
-package conection;
+package com.maktab.configuration;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

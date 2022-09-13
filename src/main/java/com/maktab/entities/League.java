@@ -1,4 +1,4 @@
-package entities;
+package com.maktab.entities;
 
 import java.sql.SQLException;
 import java.util.List;

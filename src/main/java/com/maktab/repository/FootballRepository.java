@@ -1,17 +1,15 @@
-package repository;
+package com.maktab.repository;
 
-import conection.MyConnection;
-import entities.League;
-import entities.Match;
-import entities.Team;
+import com.maktab.configuration.MyConnection;
+import com.maktab.entities.Match;
+import com.maktab.entities.Team;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
-public class TeamRepository  {
+public class FootballRepository {
 
 
     public void add(Team team) throws SQLException {
@@ -58,6 +56,18 @@ public class TeamRepository  {
             team.setMatchesPlayed(matchesPlayed);
         }
         return team;
+    }
+    public void addPlayed(Match match) throws SQLException {
+        Connection connection = MyConnection.getConnection();
+        String sql = "INSERT INTO match (firstTeam,secondTeam,teamFirstScore,teamSecondScore,date) values(?,?,?,?,?) ";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, match.getFirstTeam().toString());
+        preparedStatement.setString(2, match.getSecondTeam().toString());
+        preparedStatement.setInt(3, match.getTeamFirstScore());
+        preparedStatement.setInt(4, match.getTeamSecondScore());
+        preparedStatement.setDate(5,  match.getDate());
+
+        preparedStatement.executeUpdate();//todo
     }
 
 //    public List<Match> showLeagueTable() {

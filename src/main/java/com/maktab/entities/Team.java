@@ -1,4 +1,4 @@
-package entities;
+package com.maktab.entities;
 
 import java.util.Objects;
 
