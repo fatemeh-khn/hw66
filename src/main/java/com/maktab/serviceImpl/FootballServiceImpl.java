@@ -1,5 +1,4 @@
 package com.maktab.serviceImpl;
-
 import com.maktab.model.entities.Team;
 import com.maktab.repository.FootballRepository;
 import com.maktab.service.FootballService;
@@ -27,7 +26,10 @@ public class FootballServiceImpl implements FootballService {
                 deleteById(id);
 
             case 3:
-
+                System.out.println("enter name for view information your team");
+                String nameTeam = scanner.next();
+                Team informationTeam = showInformation(nameTeam);
+                System.out.println(informationTeam);
         }
     }
 
@@ -49,16 +51,20 @@ public class FootballServiceImpl implements FootballService {
         int matchesPlayed = scanner.nextInt();
         team = new Team(name, winCount, lostCount, equalCount, score, goalsCount, matchesPlayed);
         footballRepository.add(team);
+
     }
 
     @Override
     public void deleteById(int id) throws SQLException {
         footballRepository.deleteById(id);
+
     }
 
     @Override
     public Team showInformation(String name) throws SQLException {
-        footballRepository.showInformation(name);
-        return new Team();
+       return footballRepository.showInformation(name);
     }
-}
+
+    }
+
+

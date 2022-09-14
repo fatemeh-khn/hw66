@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class FootballRepository {
 
 
-    public  void add(Team team) throws SQLException {
+    public void add(Team team) throws SQLException {
         Connection connection = MyConnection.getConnection();
         String sql = "INSERT INTO team (name,winCount,lostCount,equalCount,score,goalsCount,matchesPlayed) values(?,?,?,?,?,?,?) ";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -34,38 +34,34 @@ public class FootballRepository {
         preparedStatement.setInt(1, id);
         preparedStatement.executeQuery();
     }
+
+
     public Team showInformation(String name) throws SQLException {
         Connection connection = MyConnection.getConnection();
-        String sql="Select * team where name=?";
+        String sql = "Select *  from team where name=?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1,name);
+        preparedStatement.setString(1, name);
         ResultSet resultSet = preparedStatement.executeQuery();
-        Team team = new Team();
-        while (resultSet.next()){
-           return new Team( resultSet.getString("name"),resultSet.getInt("winCount"),
-             resultSet.getInt("lostCount"),
-            resultSet.getInt("equalCount"),
-             resultSet.getInt("score"),
-             resultSet.getInt("goalsCount"),
-            resultSet.getInt("matchesPlayed"));
+        while (resultSet.next()) {
+            return new Team(resultSet.getString("name"),
+                    resultSet.getInt("winCount"),
+                    resultSet.getInt("lostCount"),
+                    resultSet.getInt("equalCount"),
+                    resultSet.getInt("score"),
+                    resultSet.getInt("goalsCount"),
+                    resultSet.getInt("matchesPlayed"));
 
         }
         return null;
     }
-    public void addPlayed(Match match) throws SQLException {
-        Connection connection = MyConnection.getConnection();
-        String sql = "INSERT INTO match (firstTeam,secondTeam,teamFirstScore,teamSecondScore,date) values(?,?,?,?,?) ";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, match.getFirstTeam().toString());
-        preparedStatement.setString(2, match.getSecondTeam().toString());
-        preparedStatement.setInt(3, match.getTeamFirstScore());
-        preparedStatement.setInt(4, match.getTeamSecondScore());
-        preparedStatement.setDate(5,  match.getDate());
 
-        preparedStatement.executeUpdate();//todo
+
+    public void update(String name) throws SQLException {
+        Connection connection = MyConnection.getConnection();
+        String sql =  "UPDATE team  WHERE name = ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, name);
+        preparedStatement.executeUpdate();
     }
 
-//    public List<Match> showLeagueTable() {
-//        return null;
-//    }
 }

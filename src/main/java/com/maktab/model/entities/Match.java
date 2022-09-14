@@ -5,6 +5,9 @@ import java.sql.Date;
 import java.util.Objects;
 
 public class Match {
+    public Match() {
+    }
+
     private int id;
     private String firstTeam;
     private String secondTeam;
