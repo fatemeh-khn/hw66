@@ -1,17 +1,18 @@
-package com.maktab.entities;
+package com.maktab.model.entities;
 
 
 import java.sql.Date;
 import java.util.Objects;
 
 public class Match {
-    private Team firstTeam;
-    private Team secondTeam;
+    private int id;
+    private String firstTeam;
+    private String secondTeam;
     private int teamFirstScore;
     private int teamSecondScore;
     private Date date;
 
-    public Match(Team first, Team second, int teamFirstScore, int teamSecondScore, Date date) {
+    public Match(String first, String second, int teamFirstScore, int teamSecondScore, Date date) {
         this.firstTeam = first;
         this.secondTeam = second;
         this.teamFirstScore = teamFirstScore;
@@ -19,19 +20,19 @@ public class Match {
         this.date = date;
     }
 
-    public Team getFirstTeam() {
+    public String getFirstTeam() {
         return firstTeam;
     }
 
-    public void setFirstTeam(Team firstTeam) {
+    public void setFirstTeam(String firstTeam) {
         this.firstTeam = firstTeam;
     }
 
-    public Team getSecondTeam() {
+    public String getSecondTeam() {
         return secondTeam;
     }
 
-    public void setSecondTeam(Team secondTeam) {
+    public void setSecondTeam(String secondTeam) {
         this.secondTeam = secondTeam;
     }
 

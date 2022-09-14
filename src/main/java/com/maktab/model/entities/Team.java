@@ -1,8 +1,9 @@
-package com.maktab.entities;
+package com.maktab.model.entities;
 
 import java.util.Objects;
 
 public class Team {
+    private int id;
     private String name;
     private int winCount;
     private int lostCount;

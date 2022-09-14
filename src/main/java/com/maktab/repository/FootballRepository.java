@@ -1,8 +1,8 @@
 package com.maktab.repository;
 
 import com.maktab.configuration.MyConnection;
-import com.maktab.entities.Match;
-import com.maktab.entities.Team;
+import com.maktab.model.entities.Match;
+import com.maktab.model.entities.Team;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class FootballRepository {
 
 
-    public void add(Team team) throws SQLException {
+    public  void add(Team team) throws SQLException {
         Connection connection = MyConnection.getConnection();
         String sql = "INSERT INTO team (name,winCount,lostCount,equalCount,score,goalsCount,matchesPlayed) values(?,?,?,?,?,?,?) ";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -23,16 +23,16 @@ public class FootballRepository {
         preparedStatement.setInt(5, team.getScore());
         preparedStatement.setInt(6, team.getGoalsCount());
         preparedStatement.setInt(7, team.getMatchesPlayed());
-        preparedStatement.executeUpdate();//todo
+        preparedStatement.executeUpdate();
     }
 
 
     public void deleteById(int id) throws SQLException {
         Connection connection = MyConnection.getConnection();
-        String sql = "SELECT * FROM team where id=?";
+        String sql = "DELETE  FROM team where id=?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id);
-        preparedStatement.executeUpdate();//todo
+        preparedStatement.executeQuery();
     }
     public Team showInformation(String name) throws SQLException {
         Connection connection = MyConnection.getConnection();
@@ -42,20 +42,15 @@ public class FootballRepository {
         ResultSet resultSet = preparedStatement.executeQuery();
         Team team = new Team();
         while (resultSet.next()){
-            int winCount = resultSet.getInt("winCount");
-            int lostCount = resultSet.getInt("lostCount");
-            int equalCount = resultSet.getInt("equalCount");
-            int score = resultSet.getInt("score");
-            int goalsCount = resultSet.getInt("goalsCount");
-            int matchesPlayed = resultSet.getInt("matchesPlayed");
-            team.setWinCount(winCount);
-            team.setLostCount(lostCount);
-            team.setEqualCount(equalCount);
-            team.setScore(score);
-            team.setGoalsCount(goalsCount);
-            team.setMatchesPlayed(matchesPlayed);
+           return new Team( resultSet.getString("name"),resultSet.getInt("winCount"),
+             resultSet.getInt("lostCount"),
+            resultSet.getInt("equalCount"),
+             resultSet.getInt("score"),
+             resultSet.getInt("goalsCount"),
+            resultSet.getInt("matchesPlayed"));
+
         }
-        return team;
+        return null;
     }
     public void addPlayed(Match match) throws SQLException {
         Connection connection = MyConnection.getConnection();

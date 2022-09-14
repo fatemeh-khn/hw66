@@ -1,4 +1,4 @@
-package com.maktab.entities;
+package com.maktab.model.entities;
 
 public interface LeagueFootball {
 
