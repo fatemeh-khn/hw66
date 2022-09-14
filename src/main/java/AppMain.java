@@ -12,12 +12,13 @@ public class AppMain {
     }
 
     public static void main(String[] args) throws SQLException {
-        FootballService footballService=new FootballServiceImpl();
-        Team team = new Team();
+        FootballServiceImpl footballService = new FootballServiceImpl();
+        footballService.addMenu();
+/*        Team team = new Team();
         team.setName("fars");
         footballService.add(team);
         footballService.deleteById(2);
         Team fars = footballService.showInformation("fars");
-        System.out.println(fars);
+        System.out.println(fars);*/
     }
 }
