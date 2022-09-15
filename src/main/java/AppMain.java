@@ -1,7 +1,4 @@
-import com.maktab.model.entities.Team;
-import com.maktab.repository.FootballRepository;
-import com.maktab.service.FootballService;
-import com.maktab.serviceImpl.FootballServiceImpl;
+import com.maktab.serviceImpl.TeamServiceImpl;
 
 import java.sql.SQLException;
 
@@ -12,7 +9,7 @@ public class AppMain {
     }
 
     public static void main(String[] args) throws SQLException {
-        FootballServiceImpl footballService = new FootballServiceImpl();
+        TeamServiceImpl footballService = new TeamServiceImpl();
         footballService.addMenu();
 /*        Team team = new Team();
         team.setName("fars");

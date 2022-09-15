@@ -1,7 +1,6 @@
 package com.maktab.repository;
 
 import com.maktab.configuration.MyConnection;
-import com.maktab.model.entities.Match;
 import com.maktab.model.entities.Team;
 
 import java.sql.Connection;
@@ -9,8 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class FootballRepository {
-
+public class TeamRepository {
 
     public void add(Team team) throws SQLException {
         Connection connection = MyConnection.getConnection();
@@ -26,7 +24,6 @@ public class FootballRepository {
         preparedStatement.executeUpdate();
     }
 
-
     public void deleteById(int id) throws SQLException {
         Connection connection = MyConnection.getConnection();
         String sql = "DELETE  FROM team where id=?";
@@ -34,9 +31,7 @@ public class FootballRepository {
         preparedStatement.setInt(1, id);
         preparedStatement.executeQuery();
     }
-
-
-    public Team showInformation(String name) throws SQLException {
+        public Team showInformation(String name) throws SQLException {
         Connection connection = MyConnection.getConnection();
         String sql = "Select *  from team where name=?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -50,15 +45,13 @@ public class FootballRepository {
                     resultSet.getInt("score"),
                     resultSet.getInt("goalsCount"),
                     resultSet.getInt("matchesPlayed"));
-
         }
         return null;
     }
 
-
     public void update(String name) throws SQLException {
         Connection connection = MyConnection.getConnection();
-        String sql =  "UPDATE team  WHERE name = ? ";
+        String sql = "UPDATE team  WHERE name = ? ";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, name);
         preparedStatement.executeUpdate();

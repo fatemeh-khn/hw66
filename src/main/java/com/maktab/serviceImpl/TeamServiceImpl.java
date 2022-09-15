@@ -1,14 +1,14 @@
 package com.maktab.serviceImpl;
 import com.maktab.model.entities.Team;
-import com.maktab.repository.FootballRepository;
-import com.maktab.service.FootballService;
+import com.maktab.repository.TeamRepository;
+import com.maktab.service.TeamService;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class FootballServiceImpl implements FootballService {
+public class TeamServiceImpl implements TeamService {
     static Scanner scanner = new Scanner(System.in);
-    FootballRepository footballRepository = new FootballRepository();
+    TeamRepository footballRepository = new TeamRepository();
     MatchServiceImpl matchServiceImpl = new MatchServiceImpl();
 
     public void addMenu() throws SQLException {
