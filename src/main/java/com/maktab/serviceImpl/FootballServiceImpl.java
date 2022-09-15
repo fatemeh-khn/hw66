@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class FootballServiceImpl implements FootballService {
     static Scanner scanner = new Scanner(System.in);
     FootballRepository footballRepository = new FootballRepository();
+    MatchServiceImpl matchServiceImpl = new MatchServiceImpl();
 
     public void addMenu() throws SQLException {
         Team team = new Team();
@@ -30,6 +31,21 @@ public class FootballServiceImpl implements FootballService {
                 String nameTeam = scanner.next();
                 Team informationTeam = showInformation(nameTeam);
                 System.out.println(informationTeam);
+
+                case 4:
+                    System.out.println("enter firstTime");
+                    String firstTime = scanner.next();
+
+                    System.out.println("enter goalTimeFirst");
+                    int goalTimeFirst = scanner.nextInt();
+
+                    System.out.println("enter secondTime");
+                    String secondTime = scanner.next();
+
+                    System.out.println("enter goalTimeSecond");
+                    int goalTimeSecond = scanner.nextInt();
+                    matchServiceImpl.calculateScore(firstTime,secondTime,goalTimeFirst,goalTimeSecond);
+
         }
     }
 

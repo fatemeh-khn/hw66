@@ -14,10 +14,10 @@ public class MatchServiceImpl {
     static Scanner scanner = new Scanner(System.in);
 
     public void calculateScore(String firstTeam, String secondTeam,int goalTeamFirst,int goalTeamSecond) throws SQLException {
-        System.out.println("please enter goal goalTeamFirst");
+/*        System.out.println("please enter goal goalTeamFirst");
         goalTeamFirst = scanner.nextInt();
         System.out.println("please enter goal goalTeamSecond");
-        goalTeamSecond = scanner.nextInt();
+        goalTeamSecond = scanner.nextInt();*/
         Match match = new Match();
         Team team1 = teamRepo.showInformation(firstTeam);
         Team team2 = teamRepo.showInformation(secondTeam);
